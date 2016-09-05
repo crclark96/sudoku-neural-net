@@ -1,0 +1,41 @@
+import numpy as np
+
+#sigmoid function
+def nonlin(x, deriv=False):
+    if (deriv==True):
+        return x*(1-x)
+    return 1/(1+np.exp(-x))
+
+#input dataset gathering and processing
+p = file('Warwick solver/msk_009.txt', 'r')
+s = file('Warwick solver/msk_009.txt.solution', 'r')
+
+currProblem = p.readline()
+currSolution = s.readline()
+intX = np.zeros( 81 ) #input
+intY = np.zeros( 81 ) #output
+X = np.empty( 324 ) #binary input
+Y = np.empty( 324 ) #binary output
+
+for i in range(81): #converts string to array of ints
+    if currProblem[i] != '.': 
+      intX[i] = int(currProblem[i])
+    intY[i] = int(currSolution[i])
+
+for i in range(81):
+    temp = str(bin(int(intX[i]))[2:])
+    temp2 = str(bin(int(intY[i]))[2:])
+    while (len(temp) < 4):
+        temp = "0" + temp
+    while (len(temp2) < 4):
+        temp2 = "0" + temp
+    for k in range(4):
+        X[4 * i + k] = temp[k]
+        Y[4 * i + k] = temp2[k]
+#tested and works up to here (input is clean)
+
+
+
+
+p.close()
+s.close()
