@@ -9,6 +9,8 @@
 # Or:
 # (b) The GPL version 2, see http://www.gnu.org/licenses/gpl.html
 
+#!/usr/bin/python
+
 RUN_BUILT_IN_TESTS=False
 RUN_TEST_FILES=False
 
